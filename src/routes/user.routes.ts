@@ -9,12 +9,13 @@ import {
   loginUserMiddleware,
   registerUserMiddleware,
 } from "../middlewares/user.middlewares";
+import { authTokenMiddleware } from "../utils/token";
 
 const userRouters = Router();
 
 userRouters.post("/register", registerUserMiddleware, registerController);
 userRouters.post("/login", loginUserMiddleware, loginController);
-userRouters.get("/get-info", getUserInfoController);
+userRouters.get("/get-info", authTokenMiddleware, getUserInfoController);
 userRouters.patch("/update-info", updateUserInfoController);
 userRouters.delete("/delete-info", deleteUserInfoController);
 

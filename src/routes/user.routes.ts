@@ -5,9 +5,11 @@ import getUserInfoController from "../controllers/user/get.user.info.controller"
 import updateUserInfoController from "../controllers/user/update.user.info.controller";
 import deleteUserInfoController from "../controllers/user/delete.user.info.controller";
 
+import { registerUserMiddleware } from "../middlewares/user.middlewares";
+
 const userRouters = Router();
 
-userRouters.post("/register", registerController);
+userRouters.post("/register", registerUserMiddleware, registerController);
 userRouters.post("/login", loginController);
 userRouters.get("/get-info", getUserInfoController);
 userRouters.patch("/update-info", updateUserInfoController);

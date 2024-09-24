@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-const registerController = async (req: Request, res: Response) => {
+export default function registerController(req: Request, res: Response) {
   const { name, email, phone, address } = req.body;
 
   if (!name || !email || !phone || !address) {
@@ -8,6 +8,4 @@ const registerController = async (req: Request, res: Response) => {
   }
 
   res.json({ message: "Form submitted successfully" });
-};
-
-export default registerController;
+}

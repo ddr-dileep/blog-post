@@ -1,11 +1,19 @@
 import { Request, Response } from "express";
+import { hashedPassword } from "../../utils/bcrypt";
+import UserModel from "../../models/user.model";
 
-export default function registerController(req: Request, res: Response) {
-  const { name, email, phone, address } = req.body;
+export default async function registerController(req: Request, res: Response) {
+  try {
+    const reqBody = {
+      ...req.body,
+      password: await hashedPassword(req.body.password),
+    };
 
-  if (!name || !email || !phone || !address) {
-    return res.status(400).json({ error: "All fields are required" });
+    const user = new UserModel(reqBody);
+
+    res.send(user);
+  } catch (error) {
+    console.log("error", error);
+    res.send("error: ");
   }
-
-  res.json({ message: "Form submitted successfully" });
 }

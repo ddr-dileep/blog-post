@@ -12,7 +12,8 @@ const blogPostSchema: Schema = new Schema(
     title: { type: String, required: true, trim: true },
     slug: { type: String, unique: true },
     body: { type: String, required: true },
-    tags: [{ type: String, required: true }],
+    createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    tags: [{ type: String }],
     categories: [{ type: Schema.Types.ObjectId, ref: "Category" }],
     reactions: [
       {
@@ -20,12 +21,10 @@ const blogPostSchema: Schema = new Schema(
         reactionType: {
           type: String,
           enum: ["like", "dislike"],
-          required: true,
         },
       },
     ],
     views: { type: Number, default: 0 },
-    userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
     status: {
       type: String,
       enum: PostStatus,
@@ -33,7 +32,7 @@ const blogPostSchema: Schema = new Schema(
     },
     comments: [
       {
-        userId: { type: Schema.Types.ObjectId, ref: "User" },
+        userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
         content: { type: String, required: true },
         createdAt: { type: Date, default: Date.now },
         updatedAt: { type: Date },

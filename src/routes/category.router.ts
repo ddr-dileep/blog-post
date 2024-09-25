@@ -4,6 +4,7 @@ import { authTokenMiddleware } from "../utils/token";
 import { createCategoryMiddleware } from "../middlewares/category.middlewares";
 import getAllCategoryController from "../controllers/category/get.category.controllers";
 import updateCategoryController from "../controllers/category/update.category.controller";
+import deleteCategoryController from "../controllers/category/delete.category.controller";
 
 const categoryRouter = Router();
 export default categoryRouter;
@@ -16,3 +17,4 @@ categoryRouter.post(
 );
 categoryRouter.get("/", getAllCategoryController);
 categoryRouter.patch("/:categoryId", updateCategoryController);
+categoryRouter.delete("/:categoryId", deleteCategoryController);

@@ -4,11 +4,13 @@ import { generateSlug } from "../utils/slug";
 interface ICategory extends Document {
   name: string;
   slug: string;
+  createdBy: Schema.Types.ObjectId;
 }
 
 const categorySchema: Schema = new Schema({
   name: { type: String, required: true },
   slug: { type: String, unique: true },
+  createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 // Pre-save middleware to generate slug from name

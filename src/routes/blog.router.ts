@@ -6,6 +6,9 @@ import getBlogPostByIdController, {
   getAllBlogPostsController,
   getLoggedInUsersBlogPostsControllers,
 } from "../controllers/blog/get.blog.controller";
+import deleteBlogPostController, {
+  deleteMultipleBlogPostsController,
+} from "../controllers/blog/delete.blog.controllers";
 
 const blogRouters = Router();
 
@@ -22,5 +25,11 @@ blogRouters.get(
 );
 blogRouters.get("/", getAllBlogPostsController);
 blogRouters.get("/:blogId", getBlogPostByIdController);
+blogRouters.delete("/:blogId", authTokenMiddleware, deleteBlogPostController);
+blogRouters.delete(
+  "/delete-blog-post",
+  authTokenMiddleware,
+  deleteMultipleBlogPostsController
+);
 
 export default blogRouters;

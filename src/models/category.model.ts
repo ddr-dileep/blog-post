@@ -8,7 +8,7 @@ interface ICategory extends Document {
 }
 
 const categorySchema: Schema = new Schema({
-  name: { type: String, required: true },
+  name: { type: String, required: true, unique: true },
   slug: { type: String, unique: true },
   createdBy: { type: Schema.Types.ObjectId, ref: "User", required: true },
 });

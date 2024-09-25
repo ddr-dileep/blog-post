@@ -27,3 +27,28 @@ export default async function getAllCategoryController(
       .json(apiResponse.OTHER("An error occurred while fetching categories."));
   }
 }
+
+export async function getCategoryByIdController(req: Request, res: Response) {
+  try {
+    const { categoryId } = req.params;
+
+    const category = await CategoryModel.findById(categoryId).populate(
+      "createdBy",
+      "username email avatar"
+    );
+
+    if (!category) {
+      return res
+        .status(404)
+        .json(apiResponse.ERROR("not_found", "Category not found"));
+    }
+
+    return res
+      .status(200)
+      .json(apiResponse.SUCCESS({ category }, "Category fetched successfully"));
+  } catch (error) {
+    return res
+      .status(500)
+      .json(apiResponse.OTHER("An error occurred while fetching category."));
+  }
+}

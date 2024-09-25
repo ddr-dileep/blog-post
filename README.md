@@ -7,7 +7,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-    <img src="https://dimensionsguide.s3.amazonaws.com/12-DIGITAL/TUMBLR/TUMBLR-POST-CHAT/Dimensions-Guide-Digital-Tumblr-Post-Chat.jpg" alt="Logo" width="350" height="350" />
+    <img src="https://dimensionsguide.s3.amazonaws.com/12-DIGITAL/TUMBLR/TUMBLR-POST-CHAT/Dimensions-Guide-Digital-Tumblr-Post-Chat.jpg" alt="Logo" width="500" height="250" />
     <h3 align="center">
         <a href="https://github.com/ddr-dileep/blog-post" target="_blank" >
         </a>
